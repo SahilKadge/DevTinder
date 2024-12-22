@@ -1,2 +1,1 @@
-# DevTinder
-This is tinder for dev
+This is devTinder frontend 
