@@ -7,7 +7,7 @@ import { FaFacebookF } from "react-icons/fa";
 
 export const Footer = () => {
   return (
-    <div className='relative bg-customBlack w-full py-[40px] px-[60px] '>
+    <div className=' bg-customBlack w-full py-[40px] px-[60px] '>
         <div className='grid grid-cols-4 text-customWhite'>
             <div>
                 <div className='flex items-center text-transparent bg-clip-text bg-gradient-to-right from-[#FD267A] to-[#FF6036]  '><AiFillFire className='h-[40px] text-gradientStart w-[40px]'/> <span className='text-[20px] font-semibold'>DEVTINDER</span></div>

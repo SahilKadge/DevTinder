@@ -1,8 +1,13 @@
-import { useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import React from "react";
 import bgvideo from "../assets/devtinder-bg-video-2.mp4";
+import { CreateAccountPopUp } from "./common/CreateAccountPopUp";
 
 export const LoginPage = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const toggleModal = () => {
+    setIsModalOpen((prev) => !prev);
+  };
   
 
   return (
@@ -22,9 +27,9 @@ export const LoginPage = () => {
         <div className="text-customWhite text-[100px] font-bold flex  ">
           Start Something epic. 
         </div>
-        <button className="bg-gradient-to-right px-[30px] py-[15px] rounded-full text-customWhite font-medium text-[20px] mt-[30px]">Create account</button>
+        <button onClick={toggleModal} className="bg-gradient-to-right px-[30px] py-[15px] rounded-full text-customWhite font-medium text-[20px] mt-[30px]">Create account</button>
       </div>
-      
+      {isModalOpen && <CreateAccountPopUp setIsModalOpen={setIsModalOpen} closeModal={toggleModal} />} {/* Render modal conditionally */}
     </div>
   );
 };
