@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { FeedCard } from "./common/FeedCard";
 import axios from "axios";
+import { baseURL } from "../axios/instance";
 
 
 
@@ -10,7 +11,7 @@ export const FeedsPage = () => {
 
   const fetchFeedData = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/feed", { withCredentials: true });
+      const response = await axios.get(`${baseURL}/feed`, { withCredentials: true });
       const data = response?.data?.data;
       setCards(data);
     } catch (error) {
@@ -23,8 +24,8 @@ export const FeedsPage = () => {
   }, []);
 
   return (
-    <div className="h-full w-full lg:place-items-center bg-customBlack overflow-hidden">
-      <div className="grid lg:h-auto h-[84%] lg:mt-[30px]">
+    <div className=" lg:h-full h-[80vh] w-full lg:place-items-center bg-customBlack overflow-hidden">
+      <div className="grid lg:h-auto h-[80vh] lg:mt-[30px]">
         {cards.map((card) => (
           <FeedCard
             key={card._id}
@@ -36,7 +37,7 @@ export const FeedsPage = () => {
           />
         ))}
       </div>
-      <div className="lg:w-[25vw] xmd:w-[30vw] xxmd:w-[30vw] h-[8%] mt-[20px] flex flex-row gap-[10px]">
+      <div className="lg:relative md:relative absolute w-full bottom-[10vh] lg:bottom-2 md:botton-2 lg:w-[25vw] xmd:w-[30vw] xxmd:w-[30vw] h-[10vh] mt-[20px] flex flex-row gap-[10px]">
         <button className="w-[50%] bg-customBlack border-[1px] border-customWhite text-customWhite h-[full] rounded-[10px]">
           Ignore
         </button>

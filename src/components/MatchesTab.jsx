@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
+import { baseURL } from '../axios/instance';
 export const MatchesTab = () => {
   const [reqestData , setRequestData] = useState([]);
   
   const fetchAllRequests = async() => {
     try {
       const response = await axios.get(
-        'http://localhost:3000/request/fetchall',
+        `${baseURL}/request/fetchall`,
         
         { withCredentials: true } // Enable sending cookies
       );
@@ -24,7 +25,7 @@ export const MatchesTab = () => {
   const reviewRequests = async (reviewStatus, requestId) => {
     try {
       const reviewResponse = await axios.patch(
-        `http://localhost:3000/request/review/${reviewStatus}/${requestId}`, // Use PATCH and correct endpoint
+        `${baseURL}/request/review/${reviewStatus}/${requestId}`, // Use PATCH and correct endpoint
         {}, // Empty body since the parameters are in the URL
         { withCredentials: true } // Enable sending cookies
       );

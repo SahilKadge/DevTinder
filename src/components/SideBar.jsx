@@ -16,7 +16,7 @@ export const SideBar = () => {
   console.log("user in side bar ", user)
   const [navbarState , setNavbarState] = useState("matches");
   return (
-    <div className='hidden lg:flex flex-col h-[100vh] w-full bg-customBlack border-r-[1px] border-gray-700 '>
+    <div className='flex  lg:flex flex-col h-[100vh] w-full bg-customBlack border-r-[1px] border-gray-700 '>
         <div className='flex flex-row bg-gradient-to-right h-[11%] justify-between items-center px-[10px]'>
             <div className='flex flex-row gap-[5px] '>
                 <div className=' h-[50px] w-[50px] rounded-full'>

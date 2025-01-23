@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../redux/slices/authSlice'; // Ensure you import the action correctly
+import { baseURL } from '../../axios/instance';
 
 export const MailSignin = () => {
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ export const MailSignin = () => {
     console.log('Form Output:', data);
 
     try {
-      const response = await axios.post('http://localhost:3000/auth/mail/SignIn', data, { withCredentials: true });
+      const response = await axios.post(`${baseURL}/auth/mail/SignIn`, data, { withCredentials: true });
       console.log('Response:', response.data);
 
       const  user  = response.data.data;
@@ -43,7 +44,7 @@ export const MailSignin = () => {
   };
 
   return (
-    <div className='w-[35vw] h-full flex flex-col justify-center items-center'>
+    <div className='w-full lg:w-[35vw] h-full flex flex-col justify-center items-center'>
       <div className='font-semibold text-customWhite text-[32px] text-center pt-[20px]'>Login</div>
       <form className='w-full' onSubmit={handleSubmit(onSubmit)}>
         {/* Email Field */}

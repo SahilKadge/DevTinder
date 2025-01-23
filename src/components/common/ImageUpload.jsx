@@ -49,7 +49,7 @@ export const ImageUpload = ({image, setImage}) => {
                         </div>
                         <button
                              type="button"
-                            className="bg-gradient-to-right hover:bg-gradientStart cursor-pointer text-[40px] rounded-full h-[60px] w-[60px] absolute bottom-[-25px] right-[18%] flex justify-center items-center text-customWhite"
+                            className="bg-gradient-to-right hover:bg-gradientStart cursor-pointer text-[40px] rounded-full h-[60px] w-[60px] absolute bottom-[-25px] lg:right-[18%] xxmd:right-[-2%] right-[5%] xs:right-0 flex justify-center items-center text-customWhite"
                             style={isDragging ? { backgroundColor: 'red' } : undefined}
                             onClick={() => {
                                 setText(true); 

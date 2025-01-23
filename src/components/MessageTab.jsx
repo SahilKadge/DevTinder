@@ -2,13 +2,14 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { BiSolidMessage } from "react-icons/bi";
 import { RiMessage3Fill } from "react-icons/ri";
+import { baseURL } from '../axios/instance';
 
 
 export const MessageTab = () => {
   const [fetchedConnections, setFetchedConnections] = useState([])
   const fetchAllConnections = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/connection/fetchall', { withCredentials: true })
+      const response = await axios.get(`${baseURL}/connection/fetchall`, { withCredentials: true })
       console.log(response.data.data, "response from fetch connections ")
       const fetchedData = response?.data?.data;
       setFetchedConnections(fetchedData)

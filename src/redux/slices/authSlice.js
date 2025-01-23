@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { baseURL } from '../../axios/instance';
 const initialState = {
     user: null,
     isAuthenticated: false,
@@ -10,7 +11,7 @@ export const fetchUser = createAsyncThunk(
     'auth/fetchUser',
     async (userId, { rejectWithValue }) => {
       try {
-        const response = await axios.get(`http://localhost:3000/fetch/user/${userId}`, { withCredentials: true });
+        const response = await axios.get(`${baseURL}/fetch/user/${userId}`, { withCredentials: true });
         return response.data.data; // Assuming the user data is in `data.data`
       } catch (error) {
         return rejectWithValue(error.response?.data || "An error occurred");

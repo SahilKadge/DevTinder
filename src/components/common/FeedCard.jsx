@@ -3,12 +3,13 @@
 import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 import { useState } from "react";
 import axios from "axios";
+import { baseURL } from "../../axios/instance";
 export const FeedCard = ({ id, url, setCards, card, cards }) => {
   const [status, setStatus] = useState('')
   const handleStatusOnDrag = async (status, toUserId) => {
     try {
       const response = await axios.post(
-        `http://localhost:3000/request/send/${status}/${toUserId}`,
+        `${baseURL}/request/send/${status}/${toUserId}`,
         {},
         { withCredentials: true } // Enable sending cookies
       );

@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../redux/slices/authSlice';
 import { MailSignin } from './MailSignin';
+import { baseURL } from '../../axios/instance';
 
 export const LoginPopup = ({ setIsModalOpen, closeModal }) => {
   const [isClosing, setIsClosing] = useState(false);
@@ -29,7 +30,7 @@ export const LoginPopup = ({ setIsModalOpen, closeModal }) => {
         console.log("Code Response:", codeResponse);
         try {
           // Send access_token to your backend for verification
-          const response = await axios.post("http://localhost:3000/auth/google", {
+          const response = await axios.post(`${baseURL}/auth/google`, {
             token: codeResponse.access_token,
           }, { withCredentials: true });
           console.log("Backend Response:", response.data.user.isRegistrationCompleted        );
@@ -57,7 +58,7 @@ export const LoginPopup = ({ setIsModalOpen, closeModal }) => {
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="relative flex flex-col justify-center items-center h-[70vh] w-[35vw] bg-customBlack rounded-[12px]"
+            className="relative flex flex-col justify-center items-center h-[60vh] xs:h-[75vh] lg:h-[70vh] lg:w-[35vw] md:w-[60vw] w-[90vw] bg-customBlack rounded-[12px]"
           >
             <div
               onClick={handleCloseModal}
@@ -70,7 +71,7 @@ export const LoginPopup = ({ setIsModalOpen, closeModal }) => {
                 <div className="flex items-center text-transparent bg-clip-text bg-gradient-to-right from-[#FD267A] to-[#FF6036]">
               <AiFillFire className="h-[40px] text-gradientStart w-[40px]" />
             </div>
-            <div className="font-bold text-customWhite text-[28px] my-[10px]">Create Account</div>
+            <div className="font-bold text-customWhite text-[28px] my-[10px]">Login</div>
             <div className="text-[16px] font-light text-center text-customWhite">
               By tapping Log In or Continue, you agree to our
               <br />
@@ -81,7 +82,7 @@ export const LoginPopup = ({ setIsModalOpen, closeModal }) => {
             </div>
             <button
               onClick={login}
-              className="mt-[16px] inline-flex h-12 w-[60%] hover:animate-shimmer gap-4 items-center justify-center text-center rounded-full border border-slate-700 bg-customBlack hover:bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-2 font-medium text-customWhite transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"
+              className="mt-[16px] inline-flex h-12 lg:w-[60%] md:w-[90%] w-[90%] hover:animate-shimmer gap-4 items-center justify-center text-center rounded-full border border-slate-700 bg-customBlack hover:bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-2 font-medium text-customWhite transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"
             >
               <span className="w-8 h-8 flex justify-center items-center text-customWhite rounded-full">
                 <FcGoogle />
@@ -90,7 +91,7 @@ export const LoginPopup = ({ setIsModalOpen, closeModal }) => {
             </button>
             <button
               onClick={() => setLoginType("mail")}
-              className="mt-[10px] inline-flex h-12 w-[60%] hover:animate-shimmer gap-4 items-center justify-center text-center rounded-full border border-slate-700 bg-customBlack hover:bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-2 font-medium text-customWhite transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"
+              className="mt-[10px] inline-flex h-12 w-[90%] lg:w-[60%] hover:animate-shimmer gap-4 items-center justify-center text-center rounded-full border border-slate-700 bg-customBlack hover:bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-2 font-medium text-customWhite transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"
             >
               <span className="w-8 h-8 flex justify-center items-center text-customWhite rounded-full">
                 <BiLogoGmail />
@@ -100,7 +101,7 @@ export const LoginPopup = ({ setIsModalOpen, closeModal }) => {
             </button>
             <button
               
-              className="mt-[10px] inline-flex h-12 w-[60%] hover:animate-shimmer gap-4 items-center justify-center text-center rounded-full border border-slate-700 bg-customBlack hover:bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-2 font-medium text-customWhite transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"
+              className="mt-[10px] inline-flex h-12 w-[90%] lg:w-[60%] hover:animate-shimmer gap-4 items-center justify-center text-center rounded-full border border-slate-700 bg-customBlack hover:bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-2 font-medium text-customWhite transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"
             >
               <span className="w-8 h-8 flex justify-center items-center text-customWhite rounded-full">
                 <FaPhoneAlt />

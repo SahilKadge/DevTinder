@@ -6,6 +6,7 @@ import { ImageUpload } from '../components/common/ImageUpload';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axios from "axios"
+import { baseURL } from '../axios/instance';
 const genderData = [
     {
         gender: "male",
@@ -48,7 +49,7 @@ export const RegistrationPage = () => {
                 userProfile: imageToUpload.data_url,
                 showMyGender: isCheck,
             }
-            const response = await axios.patch("http://localhost:3000/register", data, { withCredentials: true } );
+            const response = await axios.patch(`${baseURL}/register`, data, { withCredentials: true } );
             console.log("response data is ", response.data)
             if(response?.data?.data){
                 navigate('/main')
@@ -71,6 +72,8 @@ export const RegistrationPage = () => {
             }
         }
       }, [user, navigate]);
+
+
     // console.log("selected gender", selectGender)
     // console.log("image to upload ", imageToUpload.data_url)
     // console.log("is checked ", isCheck)
@@ -80,8 +83,8 @@ export const RegistrationPage = () => {
         <div className="bg-customBlack relative">
             <div className="fixed top-0 w-full flex justify-between bg-customBlack py-[20px] px-[20px] border-b-[1px] border-slate-600 z-50">
                 <div className="flex items-center text-transparent bg-clip-text bg-gradient-to-right from-[#FD267A] to-[#FF6036]">
-                    <AiFillFire className="h-[60px] text-gradientStart w-[60px]" />{' '}
-                    <span className="text-[40px] text-customWhite font-bold">DEV</span>
+                    <AiFillFire className="lg:text-[60px] md:text-[40px] text-[30px] text-gradientStart " />{' '}
+                    <span className="lg:text-[40px] md:text-[30px] text-[22px] text-customWhite font-bold">DEV</span>
                 </div>
             </div>
 
@@ -90,18 +93,18 @@ export const RegistrationPage = () => {
                     Create Account
                 </div>
 
-                <div className="mt-[100px] px-[240px]">
+                <div className="mt-[100px] lg:px-[240px] px-[10px]">
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        <div className="flex">
-                            <div>
+                        <div className="flex lg:flex-row flex-col lg:mx-0 mx-[5%]">
+                            <div >
                                 {/* First Name */}
                                 <div className="flex flex-col">
-                                    <label className="text-customWhite text-[18px] font-semibold">First Name</label>
+                                    <label className="text-customWhite text-[18px] font-semibold ">First Name</label>
                                     <input
                                         type="text"
                                         {...register('firstName', { required: 'First Name is required' })}
                                         placeholder="First Name"
-                                        className="text-gray-300 bg-darkblack placeholder:text-slate-400 border-[1px] border-slate-400 w-[500px] h-[45px] rounded-[8px] mt-[15px] p-2 placeholder:text-[16px]"
+                                        className="text-gray-300 bg-darkblack placeholder:text-slate-400 border-[1px] border-slate-400 lg:w-[500px] md:w-[400px] w-[100%]  h-[45px] rounded-[8px] mt-[15px] p-2 placeholder:text-[16px]"
                                     />
                                     {errors.firstName && (
                                         <p className="text-red-500 text-sm mt-1">{errors.firstName.message}</p>
@@ -110,12 +113,12 @@ export const RegistrationPage = () => {
 
                                 {/* Last Name */}
                                 <div className="mt-[15px] flex flex-col">
-                                    <label className="text-customWhite text-[18px] font-semibold">Last Name</label>
+                                    <label className="text-customWhite text-[18px] font-semibold ">Last Name</label>
                                     <input
                                         type="text"
                                         {...register('lastName', { required: 'Last Name is required' })}
                                         placeholder="Last Name"
-                                        className="text-gray-300 bg-darkblack placeholder:text-slate-400 border-[1px] border-slate-400 w-[500px] h-[45px] rounded-[8px] mt-[15px] p-2 placeholder:text-[16px]"
+                                        className="text-gray-300 bg-darkblack placeholder:text-slate-400 border-[1px] border-slate-400 lg:w-[500px] md:w-[400px] w-[100%]  h-[45px] rounded-[8px] mt-[15px] p-2 placeholder:text-[16px]"
                                     />
                                     {errors.lastName && (
                                         <p className="text-red-500 text-sm mt-1">{errors.lastName.message}</p>
@@ -144,7 +147,7 @@ export const RegistrationPage = () => {
 
                                 {/* Age */}
                                 <div className="mt-[15px] flex flex-col">
-                                    <label className="text-customWhite text-[18px] font-semibold">Age</label>
+                                    <label className="text-customWhite text-[18px] font-semibold ">Age</label>
                                     <input
                                         type="text"
                                         {...register('age', {
@@ -155,7 +158,7 @@ export const RegistrationPage = () => {
                                             },
                                         })}
                                         placeholder="Age"
-                                        className="text-gray-300 bg-darkblack placeholder:text-slate-400 border-[1px] border-slate-400 w-[60px] h-[45px] rounded-[8px] mt-[15px] p-2 placeholder:text-center placeholder:text-[16px]"
+                                        className="text-gray-300  bg-darkblack placeholder:text-slate-400 border-[1px] border-slate-400 w-[60px] h-[45px] rounded-[8px] mt-[15px] p-2 placeholder:text-center placeholder:text-[16px]"
                                     />
                                     {errors.age && (
                                         <p className="text-red-500 text-sm mt-1">{errors.age.message}</p>
@@ -210,7 +213,7 @@ export const RegistrationPage = () => {
                             </div>
 
                             {/* Image Upload Section */}
-                            <div className="w-[50%] h-full">
+                            <div className="lg:w-[50%] xxmd:ml-[50px] w-full h-full">
                                 <ImageUpload  image={imageToUpload} setImage={setImageToUpload}/>
                             </div>
                         </div>

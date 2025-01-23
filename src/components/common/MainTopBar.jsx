@@ -19,7 +19,7 @@ export const MainTopBar = () => {
         <div className="absolute w-full bg-transparent">
             <button
                 onClick={handleLogout}
-                className="absolute px-[20px] py-[10px] bg-gradient-to-right text-customWhite text-[16px] rounded-full right-4 top-4"
+                className=" lg:block md:block hidden absolute px-[20px] py-[10px] bg-gradient-to-right text-customWhite text-[16px] rounded-full right-4 top-4"
             >
                 Log Out
             </button>
