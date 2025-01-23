@@ -1,10 +1,12 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { HomeLayout } from '../layout/Layout'
 import { LoginPage } from '../components/LoginPage'
+
 export const Home = () => {
+  
   return (
-    <HomeLayout>
-        <LoginPage/>
+    <HomeLayout >
+        <LoginPage />
     </HomeLayout>
   )
 }
